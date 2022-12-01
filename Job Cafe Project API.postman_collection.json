@@ -1,0 +1,301 @@
+{
+	"info": {
+		"_postman_id": "400c0922-a6e0-4e4d-9859-a216fb9ec58a",
+		"name": "Job Cafe Project API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20801674"
+	},
+	"item": [
+		{
+			"name": "Positive Tests",
+			"item": [
+				{
+					"name": "Location test",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code test\", function(){",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var jsonResponse = pm.response.json();",
+									"",
+									"pm.test(\"Location test\", function(){",
+									"    pm.expect(jsonResponse.content[0].location).to.eq(\"Toronto, ON, Canada\")",
+									"});",
+									"",
+									"pm.test(\"ID test\", function(){",
+									"    pm.expect(jsonResponse.content[0].id).to.eq(\"6388bb0f74f47208c4437948\")",
+									"});",
+									"",
+									"pm.test(\"Company test\", function(){",
+									"    pm.expect(jsonResponse.content[0].company).to.eq(\"Paladin Security\")",
+									"});",
+									"",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://api.jobka.net:8081/jobs?location=Toronto",
+							"protocol": "http",
+							"host": [
+								"api",
+								"jobka",
+								"net"
+							],
+							"port": "8081",
+							"path": [
+								"jobs"
+							],
+							"query": [
+								{
+									"key": "location",
+									"value": "Toronto"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Position test",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code test\", function(){",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var jsonResponse = pm.response.json();",
+									"",
+									"pm.test(\"Position test\", function(){",
+									"    pm.expect(jsonResponse.content[0].position).to.eq(\"QA Engineer - Now Hiring\")",
+									"});",
+									"",
+									"",
+									"pm.test(\"Seniority test\", function(){",
+									"    pm.expect(jsonResponse.content[0].seniority).to.eq(\"junior/mid\")",
+									"});",
+									"",
+									"pm.test(\"Link test\", function(){",
+									"    pm.expect(jsonResponse.content[0].link).to.eq(\"https://www.snagajob.com/jobs/797367522?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic\")",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://api.jobka.net:8081/jobs?position=QA",
+							"protocol": "http",
+							"host": [
+								"api",
+								"jobka",
+								"net"
+							],
+							"port": "8081",
+							"path": [
+								"jobs"
+							],
+							"query": [
+								{
+									"key": "position",
+									"value": "QA"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Company test",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code test\", function(){",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var jsonResponse = pm.response.json();",
+									"",
+									"pm.test(\"Company test\", function(){",
+									"    pm.expect(jsonResponse.content[0].company).to.eq(\"Apple\")",
+									"});",
+									"",
+									"pm.test(\"ID test\", function(){",
+									"    pm.expect(jsonResponse.content[0].id).to.eq(\"6388b93774f47208c4437911\")",
+									"});",
+									"",
+									"pm.test(\"Salary test\", function(){",
+									"    pm.expect(jsonResponse.content[0].salary).to.eq(\"unknown\")",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://api.jobka.net:8081/jobs?company=Apple",
+							"protocol": "http",
+							"host": [
+								"api",
+								"jobka",
+								"net"
+							],
+							"port": "8081",
+							"path": [
+								"jobs"
+							],
+							"query": [
+								{
+									"key": "company",
+									"value": "Apple"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Date test",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code test\", function(){",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var jsonResponse = pm.response.json();",
+									"",
+									"pm.test(\"Date test\", function(){",
+									"    pm.expect(jsonResponse.content[0].date).to.eq(pm.globals.get(\"date\"))",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://api.jobka.net:8081/jobs?date=2021-07-11",
+							"protocol": "http",
+							"host": [
+								"api",
+								"jobka",
+								"net"
+							],
+							"port": "8081",
+							"path": [
+								"jobs"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2021-07-11"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Negative Tests",
+			"item": [
+				{
+					"name": "Status test",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code test\", function(){",
+									"    pm.response.to.have.status(204);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response body\", function(){",
+									"    var res = (_.isEmpty(responseBody));",
+									"    pm.expect(res).to.be.true",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://api.jobka.net:8081/jobs?id=123a1345",
+							"protocol": "http",
+							"host": [
+								"api",
+								"jobka",
+								"net"
+							],
+							"port": "8081",
+							"path": [
+								"jobs"
+							],
+							"query": [
+								{
+									"key": "location",
+									"value": "Toronto",
+									"disabled": true
+								},
+								{
+									"key": "position",
+									"value": "QA",
+									"disabled": true
+								},
+								{
+									"key": "seniority",
+									"value": "senior",
+									"disabled": true
+								},
+								{
+									"key": "company",
+									"value": "Veeva Systems",
+									"disabled": true
+								},
+								{
+									"key": "id",
+									"value": "123a1345"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
